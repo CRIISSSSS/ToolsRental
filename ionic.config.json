@@ -1,0 +1,7 @@
+{
+  "name": "ToolsRental",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
