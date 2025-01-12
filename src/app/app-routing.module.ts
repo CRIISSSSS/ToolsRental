@@ -18,7 +18,23 @@ const routes: Routes = [
   {
     path: 'registrar',
     loadChildren: () => import('./pages/registrar/registrar.module').then( m => m.RegistrarPageModule)
+  },  {
+    path: 'lobby',
+    loadChildren: () => import('./pages/lobby/lobby.module').then( m => m.LobbyPageModule)
   },
+  {
+    path: 'productos',
+    loadChildren: () => import('./pages/productos/productos.module').then( m => m.ProductosPageModule)
+  },
+  {
+    path: 'carrito',
+    loadChildren: () => import('./pages/carrito/carrito.module').then( m => m.CarritoPageModule)
+  },
+  {
+    path: 'metodopago',
+    loadChildren: () => import('./pages/metodopago/metodopago.module').then( m => m.MetodopagoPageModule)
+  },
+
 ];
 
 @NgModule({
