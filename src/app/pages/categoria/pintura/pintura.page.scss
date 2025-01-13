@@ -1,0 +1,59 @@
+body {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .header {
+    background-color: #e60000;
+    color: white;
+    display: flex; /* Añadido para usar flexbox */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    height: 60px; /* Ajusta la altura si es necesario */
+    text-align: center;
+  }
+  
+  .centered-title {
+    font-size: 1.5rem; /* Tamaño del título */
+    margin: 0; /* Elimina márgenes por defecto */
+  }
+  
+  .search-bar {
+    background-color: #e60000;
+    padding: 10px;
+  }
+  
+  .search-bar input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .category {
+    text-align: center;
+  }
+  
+  .category img {
+    border-radius: 50%;
+    border: 2px solid #e60000;
+    width: 100px;
+    height: 100px;
+    transition: transform 0.3s; /* Animación al pasar el cursor */
+  }
+  
+  .category img:hover {
+    transform: scale(1.1); /* Efecto de zoom */
+  }
+  
+  .category p {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+  

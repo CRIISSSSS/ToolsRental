@@ -1,12 +1,15 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
+
 .clickable {
   cursor: pointer;
 }
+
 .header {
   background-color: #e60000;
   color: white;
+  text-align: center;
 }
 
 .header img {
@@ -42,9 +45,10 @@ body {
   width: 100px;
   height: 100px;
 }
+
 .user-menu {
   position: absolute;
-  top: 60px; /* Ajusta segÃºn la altura del toolbar */
+  top: 60px; /* Ajusta según la altura del toolbar */
   right: 10px;
   background: white;
   border: 1px solid #ccc;

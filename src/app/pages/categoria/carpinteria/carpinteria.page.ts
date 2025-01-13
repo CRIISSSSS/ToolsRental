@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carpinteria',
@@ -6,11 +7,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./carpinteria.page.scss'],
   standalone: false,
 })
-export class CarpinteriaPage implements OnInit {
+export class CarpinteriaPage {
+  herramientas = [
+    {
+      nombre: 'Martillo',
+      imagen: 'assets/Images/martillo.webp',
+    },
+    {
+      nombre: 'Serrucho electrico',
+      imagen: 'assets/Images/serruchoelectrico.jpg',
+    },
+    {
+      nombre: 'Taladro',
+      imagen: 'assets/Images/taladro.jpg',
+    },
+    {
+      nombre: 'serrucho',
+      imagen: 'assets/Images/serrucho.png',
+    },
+  ];
 
-  constructor() { }
+  constructor(private router: Router) {}
 
-  ngOnInit() {
+  carrito() {
+    this.router.navigate(['/carrito']);
   }
 
 }
