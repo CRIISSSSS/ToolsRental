@@ -1,0 +1,56 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.section-title {
+  color: #e60000;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.description {
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}
+
+ion-item {
+  margin-bottom: 15px;
+}
+
+.btn-red {
+  background-color: #e60000 !important; /* Fondo rojo */
+  color: white !important; /* Texto blanco */
+  font-size: 14px;
+  border-radius: 4px; /* Opcional: esquinas redondeadas */
+  border: none; /* Sin borde adicional */
+  --background: #e60000 !important; /* Configuración para Ionic */
+  --background-activated: #cc0000 !important; /* Fondo más oscuro al hacer clic */
+  --background-hover: #d00000 !important; /* Fondo más oscuro al pasar el mouse */
+  --color: white !important; /* Forzar texto blanco */
+}
+
+.text-center {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.link {
+  color: #666;
+  text-decoration: underline;
+  font-size: 13px;
+}
+
+.required-info {
+  color: #e60000;
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 20px;
+}

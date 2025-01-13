@@ -1,47 +1,35 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title class="ion-text-center">ToolsRental</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar class="bg-white">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div class="login-container ion-text-center"></div>
-    <ion-icon name="person-circle-outline" class="icon"></ion-icon>
-    <h2>Registrarse</h2>
-
+  <div class="login-container">
     <ion-item>
-      <ion-icon slot="start" name="mail-outline"></ion-icon>
-      <ion-input placeholder="Correo electrónico"></ion-input>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text"></ion-input>
     </ion-item>
-
     <ion-item>
-      <ion-icon slot="start" name=""></ion-icon>
-      <ion-input placeholder="Nombre"></ion-input>
+      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-input type="email"></ion-input>
     </ion-item>
-
     <ion-item>
-      <ion-icon slot="start" name=""></ion-icon>
-      <ion-input placeholder="Apellidos"></ion-input>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password"></ion-input>
     </ion-item>
-
     <ion-item>
-      <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
-      <ion-input placeholder="Contraseña" type="password"></ion-input>
-      <ion-icon slot="end" name="eye-outline"></ion-icon>
+      <ion-label position="floating">Dirección</ion-label>
+      <ion-input type="text"></ion-input>
     </ion-item>
-
     <ion-item>
-      <ion-icon slot="start" ></ion-icon>
-      <ion-input placeholder="Confirma contraseña" type="password"></ion-input>
-      <ion-icon slot="end" name="eye-outline"></ion-icon>
+      <ion-label position="floating">Año de nacimiento</ion-label>
+      <ion-input type="number"></ion-input>
     </ion-item>
-
-
-
-
-
-
-
-
-
+    <ion-button class="btn-red" expand="block">REGISTRARSE</ion-button>
+  </div>
 </ion-content>
+

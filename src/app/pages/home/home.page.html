@@ -1,31 +1,50 @@
-<ion-header>
+<ion-header class="header">
   <ion-toolbar>
-    <ion-title class="ion-text-center">
-      ToolsRental
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <img src="https://placehold.co/100x40?text=Logo" alt="Construplaza Logo" />
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon
+        slot="icon-only"
+        name="location-outline">
+      </ion-icon>
+      <ion-icon
+        slot="icon-only"
+        name="person-outline"
+        (click)="toggleMenu()"
+        class="clickable">
+      </ion-icon>
+      <ion-icon (click)="carrito()" slot="icon-only" name="cart-outline"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
+  <!-- Menú de usuario -->
+  <div class="user-menu" *ngIf="menuOpen">
+    <ul>
+      <li (click)="logout()">Cerrar sesión</li>
+    </ul>
+  </div>
 </ion-header>
 
-<ion-content class="ion-padding ion-text-center">
-  <ion-text class="ion-text-center texto-rojo">
-    <h1>Bienvenidos a ToolsRental</h1>
-  </ion-text>
-</ion-content>
+<ion-content>
+  <div class="search-bar">
+    <input type="text" placeholder="¿Qué estas buscando?..." />
+  </div>
 
-<ion-content class="ion-padding ion-text-center">
-  <div class="welcome-container">
-    <ion-button expand="block" routerLink="/login" class="button">
-      Iniciar sesión
-    </ion-button>
-    i
-
-    <ion-button expand="block" routerLink="/registrar" class="button">
-      Registrarse
-    </ion-button>
-
-    <ion-button expand="block" routerLink="/admin" class="button">
-      Administrador
-    </ion-button>
+  <div class="categories">
+    <div class="category" (click)="carpinteria()">
+      <img src="https://placehold.co/100x100?text=Herramientas" alt="Carpinteria" />
+      <p>Carpinteria</p>
+    </div>
+    <div class="category" (click)="demolicion()">
+      <img src="https://placehold.co/100x100?text=Maderas" alt="Demolicion" />
+      <p>Demolicion</p>
+    </div>
+    <div class="category" (click)="pintura()">
+      <img src="https://placehold.co/100x100?text=Aceros" alt="Pintura" />
+      <p>Pintura</p>
+    </div>
   </div>
 </ion-content>
-

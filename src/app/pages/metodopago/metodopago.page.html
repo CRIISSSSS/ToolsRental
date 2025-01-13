@@ -1,13 +1,90 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>metodopago</ion-title>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/carrito">
+        <ion-icon slot="icon-only" name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Método de Pago</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">metodopago</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <!-- Selector de método de pago -->
+  <ion-item>
+    <ion-label>Método de Pago</ion-label>
+    <ion-select placeholder="Selecciona">
+      <ion-select-option value="debito">Tarjeta Débito</ion-select-option>
+      <ion-select-option value="credito">Tarjeta Crédito</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- Métodos disponibles -->
+  <div class="available-methods">
+    <ion-icon name="card-outline" size="large"></ion-icon>
+    <ion-icon name="wallet-outline" size="large"></ion-icon>
+  </div>
+
+  <!-- Formulario de tarjeta -->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="stacked">Número de tarjeta</ion-label>
+          <ion-input placeholder="1234 5678 9012 3456" type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label position="stacked">Fecha de caducidad</ion-label>
+          <ion-input placeholder="MM/AA" type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label position="stacked">Clave</ion-label>
+          <ion-input placeholder="CVV" type="password"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="stacked">Dirección</ion-label>
+          <ion-input placeholder="Calle y número"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Detalle del producto -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Equipo pintar Airless skid pro 190</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Detalle del producto...</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Total a pagar -->
+  <ion-item>
+    <ion-label>Total a pagar:</ion-label>
+    <ion-text color="primary">
+      <h2>$263.000</h2>
+    </ion-text>
+  </ion-item>
+
+  <!-- Botón de pago con evento click -->
+  <ion-button expand="block" color="success" (click)="processPayment()">Pagar</ion-button>
+
+  <!-- Botón para regresar al Home -->
+  <ion-button expand="block" color="primary" routerLink="/home">Regresar al Home</ion-button>
+
+  <!-- Toast para notificación -->
+  <ion-toast
+    id="payment-toast"
+    [isOpen]="showToast"
+    message="¡Pago realizado exitosamente!"
+    duration="2000"
+    color="success"
+  ></ion-toast>
 </ion-content>

@@ -1,30 +1,42 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title class="ion-text-center">
-      ToolsRental
+<ion-header class="ion-no-border">
+  <ion-toolbar class="bg-white">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <img src="https://placehold.co/150x50?text=Logo" alt="Company Logo" />
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div class="login-container ion-text-center">
-    <ion-icon name="person-circle-outline" class="icon"></ion-icon>
-    <h2>Inicio sesión</h2>
-
+  <div class="login-container">
+    <h2 class="section-title">Clientes registrados</h2>
+    <p class="description">
+      Si tiene una cuenta, inicie sesión con su dirección de correo electrónico.
+    </p>
     <ion-item>
-      <ion-icon slot="start" name="mail-outline"></ion-icon>
-      <ion-input placeholder="Correo electrónico"></ion-input>
+      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
     </ion-item>
-
     <ion-item>
-      <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
-      <ion-input placeholder="Contraseña" type="password"></ion-input>
-      <ion-icon slot="end" name="eye-outline"></ion-icon>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
+    <ion-item lines="none">
+      <ion-checkbox slot="start"></ion-checkbox>
+      <ion-label>Mostrar Contraseña.</ion-label>
+    </ion-item>
+    <ion-button class="btn-red" expand="block" (click)="login()">INICIAR SESIÓN</ion-button>
+    <p class="text-center">
+      <a class="link" href="#">¿Olvidó su contraseña?</a>
+    </p>
+    <p class="required-info">* Campos obligatorios</p>
 
-    <div class="button-group">
-      <ion-button expand="block" class="login-button">Iniciar sesión</ion-button>
-      <ion-button expand="block" fill="outline" class="register-button">Registrarse</ion-button>
-    </div>
+    <h2 class="section-title">Nuevos clientes</h2>
+    <p class="description">
+      Crear una cuenta tiene muchos beneficios: Pago más rápido, guardar más de una dirección, seguimiento de pedidos y mucho más.
+    </p>
+    <ion-button class="btn-red" expand="block" (click)="registro()">CREAR UNA CUENTA</ion-button>
   </div>
 </ion-content>
