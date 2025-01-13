@@ -1,13 +1,30 @@
-<ion-header [translucent]="true">
+<ion-header class="header">
   <ion-toolbar>
-    <ion-title>demolicion</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <h1>Demolición</h1>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon
+        slot="icon-only"
+        name="cart-outline"
+        (click)="carrito()">
+      </ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">demolicion</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="search-bar">
+    <input type="text" placeholder="Buscar herramientas de demolición..." />
+  </div>
+
+  <div class="categories">
+    <div class="category" *ngFor="let herramienta of herramientas">
+      <img [src]="herramienta.imagen" [alt]="herramienta.nombre" />
+      <p>{{ herramienta.nombre }}</p>
+    </div>
+  </div>
 </ion-content>

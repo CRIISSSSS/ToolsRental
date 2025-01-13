@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-demolicion',
@@ -6,11 +7,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./demolicion.page.scss'],
   standalone: false,
 })
-export class DemolicionPage implements OnInit {
+export class DemolicionPage {
+  herramientas = [
+    {
+      nombre: 'Mazo',
+      imagen: 'assets/Images/mazo.jpg',
+    },
+    {
+      nombre: 'Cincel',
+      imagen: 'assets/Images/cincel.jpg',
+    },
+    {
+      nombre: 'Barreta',
+      imagen: 'assets/Images/barreta.png',
+    },
+    {
+      nombre:'Roto martillo',
+      imagen:'assets/Images/rotomartillo.jpg'
+    }
+  ];
 
-  constructor() { }
+  constructor(private router: Router) {}
 
-  ngOnInit() {
+  carrito() {
+    this.router.navigate(['/carrito']);
   }
-
 }
