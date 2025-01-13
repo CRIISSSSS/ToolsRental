@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -18,7 +18,8 @@ const routes: Routes = [
   {
     path: 'registrar',
     loadChildren: () => import('./pages/registrar/registrar.module').then( m => m.RegistrarPageModule)
-  },  {
+  },
+  {
     path: 'lobby',
     loadChildren: () => import('./pages/lobby/lobby.module').then( m => m.LobbyPageModule)
   },
@@ -33,7 +34,19 @@ const routes: Routes = [
   {
     path: 'metodopago',
     loadChildren: () => import('./pages/metodopago/metodopago.module').then( m => m.MetodopagoPageModule)
+  },  {
+    path: 'demolicion',
+    loadChildren: () => import('./pages/categoria/demolicion/demolicion.module').then( m => m.DemolicionPageModule)
   },
+  {
+    path: 'carpinteria',
+    loadChildren: () => import('./pages/categoria/carpinteria/carpinteria.module').then( m => m.CarpinteriaPageModule)
+  },
+  {
+    path: 'pintura',
+    loadChildren: () => import('./pages/categoria/pintura/pintura.module').then( m => m.PinturaPageModule)
+  },
+
 
 ];
 

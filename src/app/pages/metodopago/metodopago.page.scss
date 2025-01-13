@@ -1,0 +1,15 @@
+.available-methods {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 16px 0;
+  }
+  
+  .available-methods ion-icon {
+    font-size: 32px;
+    color: var(--ion-color-primary);
+  }
+  
+  ion-card {
+    margin-top: 20px;
+  }
+  
