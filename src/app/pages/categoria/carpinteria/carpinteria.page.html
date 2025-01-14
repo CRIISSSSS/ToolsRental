@@ -7,11 +7,7 @@
       <h1>Carpintería</h1>
     </ion-title>
     <ion-buttons slot="end">
-      <ion-icon
-        slot="icon-only"
-        name="cart-outline"
-        (click)="carrito()">
-      </ion-icon>
+      <ion-icon slot="icon-only" name="cart-outline" (click)="carrito()"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -22,7 +18,7 @@
   </div>
 
   <div class="categories">
-    <div class="category" *ngFor="let herramienta of herramientas">
+    <div class="category" *ngFor="let herramienta of herramientas" (click)="verDetalle(herramienta)">
       <img [src]="herramienta.imagen" [alt]="herramienta.nombre" />
       <p>{{ herramienta.nombre }}</p>
     </div>

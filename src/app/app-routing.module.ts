@@ -46,6 +46,10 @@ const routes: Routes = [
     path: 'pintura',
     loadChildren: () => import('./pages/categoria/pintura/pintura.module').then( m => m.PinturaPageModule)
   },
+  {
+    path: 'detalle-producto',
+    loadChildren: () => import('./pages/detalle-producto/detalle-producto.module').then( m => m.DetalleProductoPageModule)
+  },
 
 
 ];

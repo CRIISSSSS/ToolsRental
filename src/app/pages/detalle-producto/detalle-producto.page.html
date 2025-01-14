@@ -1,0 +1,24 @@
+<ion-header class="header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/carpinteria"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="centered-title">
+      <h1>{{ herramienta?.nombre }}</h1>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="product-details">
+    <img [src]="herramienta?.imagen" [alt]="herramienta?.nombre" />
+    <h2>{{ herramienta?.nombre }}</h2>
+    <p class="descripcion">{{ herramienta?.descripcion }}</p>
+    <p class="precio">Precio: ${{ herramienta?.precio }} / día</p>
+    <p class="disponibilidad">Estado: {{ herramienta?.disponibilidad }}</p>
+
+    <ion-button expand="block" color="danger" [disabled]="herramienta?.disponibilidad === 'No disponible'">
+      Añadir al carrito
+    </ion-button>
+  </div>
+</ion-content>

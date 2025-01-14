@@ -10,7 +10,26 @@ import { Router } from '@angular/router';
 export class HomePage {
   menuOpen: boolean = false;
 
+  categorias = [
+    {
+      nombre: 'Carpintería',
+      imagen: 'assets/Images/carpinteria.jpg',
+      ruta: '/carpinteria',
+    },
+    {
+      nombre: 'Demolición',
+      imagen: 'assets/Images/demolicion.jpg',
+      ruta: '/demolicion',
+    },
+    {
+      nombre: 'Pintura',
+      imagen: 'assets/Images/pintura.jpg',
+      ruta: '/pintura',
+    },
+  ];
+
   constructor(private router: Router) {}
+
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
@@ -20,19 +39,11 @@ export class HomePage {
     this.router.navigate(['/login']);
   }
 
-  carpinteria() {
-    this.router.navigate(['/carpinteria']);
-  }
-
   carrito() {
     this.router.navigate(['/carrito']);
   }
 
-  demolicion(){
-    this.router.navigate(['/demolicion']);
-  }
-  
-  pintura(){
-    this.router.navigate(['/pintura']);
+  navigateTo(ruta: string) {
+    this.router.navigate([ruta]);
   }
 }

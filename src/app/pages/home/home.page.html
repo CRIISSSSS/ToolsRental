@@ -7,16 +7,8 @@
       <h1>ToolsRental</h1>
     </ion-title>
     <ion-buttons slot="end">
-      <ion-icon
-        slot="icon-only"
-        name="location-outline">
-      </ion-icon>
-      <ion-icon
-        slot="icon-only"
-        name="person-outline"
-        (click)="toggleMenu()"
-        class="clickable">
-      </ion-icon>
+      <ion-icon slot="icon-only" name="location-outline"></ion-icon>
+      <ion-icon slot="icon-only" name="person-outline" (click)="toggleMenu()" class="clickable"></ion-icon>
       <ion-icon (click)="carrito()" slot="icon-only" name="cart-outline"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
@@ -30,21 +22,18 @@
 
 <ion-content>
   <div class="search-bar">
-    <input type="text" placeholder="¿Qué estas buscando?..." />
+    <input type="text" placeholder="¿Qué estás buscando?..." />
   </div>
 
   <div class="categories">
-    <div class="category" (click)="carpinteria()">
-      <img src="assets/Images/carpinteria.jpg" alt="Carpinteria" />
-      <p>Carpinteria</p>
-    </div>
-    <div class="category" (click)="demolicion()">
-      <img src="assets/Images/demolicion.jpg" alt="Demolicion" />
-      <p>Demolicion</p>
-    </div>
-    <div class="category" (click)="pintura()">
-      <img src="assets/Images/pintura.jpg" alt="Pintura" />
-      <p>Pintura</p>
+    <div 
+      class="category" 
+      *ngFor="let categoria of categorias" 
+      (click)="navigateTo(categoria.ruta)"
+    >
+      <img [src]="categoria.imagen" [alt]="categoria.nombre" />
+      <p>{{ categoria.nombre }}</p>
     </div>
   </div>
 </ion-content>
+
