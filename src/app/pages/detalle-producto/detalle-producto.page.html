@@ -17,8 +17,22 @@
     <p class="precio">Precio: ${{ herramienta?.precio }} / día</p>
     <p class="disponibilidad">Estado: {{ herramienta?.disponibilidad }}</p>
 
-    <ion-button expand="block" color="danger" [disabled]="herramienta?.disponibilidad === 'No disponible'">
+    <ion-button 
+      expand="block" 
+      color="danger" 
+      [disabled]="herramienta?.disponibilidad === 'No disponible'" 
+      (click)="anadirAlCarrito()"
+    >
       Añadir al carrito
     </ion-button>
   </div>
+
+  <!-- Componente IonAlert -->
+  <ion-alert
+    [isOpen]="alertaActiva"
+    header="¡Listo!"
+    message="Añadido al carrito"
+    buttons="OK"
+    (didDismiss)="cerrarAlerta()"
+  ></ion-alert>
 </ion-content>
