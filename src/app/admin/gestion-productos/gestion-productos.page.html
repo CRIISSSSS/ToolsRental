@@ -1,0 +1,61 @@
+<ion-header class="header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="centered-title">
+      <h1>Gestión de Productos</h1>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="search-bar">
+    <input type="text" placeholder="Buscar producto..." (input)="filtrarProductos($event)" />
+  </div>
+
+  <div class="tabs">
+    <button 
+      *ngFor="let categoria of categorias" 
+      (click)="cambiarCategoria(categoria.nombre)" 
+      [class.active]="categoria.nombre === categoriaActual">
+      {{ categoria.nombre }}
+    </button>
+  </div>
+
+  <div class="categories">
+    <div class="category" *ngFor="let herramienta of herramientasFiltradas">
+      <img [src]="herramienta.imagen" [alt]="herramienta.nombre" />
+      <h3>{{ herramienta.nombre }}</h3>
+      <p>{{ herramienta.descripcion }}</p>
+      <p class="precio">Precio: ${{ herramienta.precio }}</p>
+      <p class="estado">{{ herramienta.disponibilidad }}</p>
+      <button (click)="modificarProducto(herramienta)">Modificar</button>
+      <button (click)="eliminarProducto(herramienta.id)">Eliminar</button>
+    </div>
+  </div>
+
+  <div *ngIf="modoEdicionProducto" class="edit-form">
+    <h3>Modificar Producto</h3>
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="formHerramienta.nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input [(ngModel)]="formHerramienta.descripcion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input [(ngModel)]="formHerramienta.precio" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Disponibilidad</ion-label>
+      <ion-select [(ngModel)]="formHerramienta.disponibilidad">
+        <ion-select-option value="Disponible">Disponible</ion-select-option>
+        <ion-select-option value="No disponible">No disponible</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <button expand="block" (click)="guardarProducto()">Guardar</button>
+  </div>
+</ion-content>

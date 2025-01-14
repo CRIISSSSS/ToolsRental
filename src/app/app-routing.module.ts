@@ -34,7 +34,8 @@ const routes: Routes = [
   {
     path: 'metodopago',
     loadChildren: () => import('./pages/metodopago/metodopago.module').then( m => m.MetodopagoPageModule)
-  },  {
+  },
+  {
     path: 'demolicion',
     loadChildren: () => import('./pages/categoria/demolicion/demolicion.module').then( m => m.DemolicionPageModule)
   },
@@ -50,6 +51,18 @@ const routes: Routes = [
     path: 'detalle-producto',
     loadChildren: () => import('./pages/detalle-producto/detalle-producto.module').then( m => m.DetalleProductoPageModule)
   },
+  {
+    path: 'admhome',
+    loadChildren: () => import('./admin/home/home.module').then( m => m.HomePageModule)
+  },  {
+    path: 'gestion-productos',
+    loadChildren: () => import('./admin/gestion-productos/gestion-productos.module').then( m => m.GestionProductosPageModule)
+  },
+  {
+    path: 'gestion-usuarios',
+    loadChildren: () => import('./admin/gestion-usuarios/gestion-usuarios.module').then( m => m.GestionUsuariosPageModule)
+  },
+
 
 
 ];

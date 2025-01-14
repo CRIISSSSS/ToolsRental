@@ -1,0 +1,81 @@
+body {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .header {
+    background-color: #e60000;
+    color: white;
+    text-align: center;
+  }
+  
+  .search-bar {
+    background-color: #e60000;
+    padding: 10px;
+  }
+  
+  .search-bar input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Diseño en dos columnas */
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .category {
+    text-align: center;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    padding: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .category:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .category img {
+    border-radius: 10px;
+    border: 3px solid #e60000;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .category p {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #e60000;
+  }
+  
+  .user-menu {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px;
+    }
+  
+    li {
+      padding: 8px 10px;
+      cursor: pointer;
+      color: #e60000;
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+  
