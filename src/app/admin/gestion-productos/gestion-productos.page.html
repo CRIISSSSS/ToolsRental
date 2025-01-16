@@ -25,33 +25,11 @@
     </button>
   </div>
 
-  <!-- Botón para añadir producto -->
+  <!-- Botón para añadir producto que redirige a add-producto -->
   <div class="add-button">
-    <button (click)="mostrarFormulario = !mostrarFormulario">
-      {{ mostrarFormulario ? 'Cancelar' : 'Añadir Producto' }}
+    <button routerLink="/add-producto">
+      Añadir Producto
     </button>
-  </div>
-
-  <!-- Formulario para añadir producto (visible solo si mostrarFormulario es true) -->
-  <div *ngIf="mostrarFormulario" class="add-product">
-    <h3 class="ion-text-center">Añadir Producto</h3>
-    <ion-item>
-      <ion-label position="floating">Nombre del Producto</ion-label>
-      <ion-input [(ngModel)]="nuevoProducto.nombre"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Descripción</ion-label>
-      <ion-input [(ngModel)]="nuevoProducto.descripcion"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Precio</ion-label>
-      <ion-input [(ngModel)]="nuevoProducto.precio" type="number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Imagen</ion-label>
-      <ion-input type="file" (change)="onFileChange($event)"></ion-input>
-    </ion-item>
-    <button expand="block" (click)="agregarNuevoProducto()">Guardar Producto</button>
   </div>
 
   <!-- Lista de herramientas -->
@@ -65,30 +43,5 @@
       <button (click)="modificarProducto(herramienta)">Modificar</button>
       <button (click)="eliminarProducto(herramienta.id)">Eliminar</button>
     </div>
-  </div>
-
-  <!-- Formulario de modificación (si modoEdicionProducto es true) -->
-  <div *ngIf="modoEdicionProducto" class="edit-form">
-    <h3>Modificar Producto</h3>
-    <ion-item>
-      <ion-label position="floating">Nombre</ion-label>
-      <ion-input [(ngModel)]="formHerramienta.nombre"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Descripción</ion-label>
-      <ion-input [(ngModel)]="formHerramienta.descripcion"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Precio</ion-label>
-      <ion-input [(ngModel)]="formHerramienta.precio" type="number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Disponibilidad</ion-label>
-      <ion-select [(ngModel)]="formHerramienta.disponibilidad">
-        <ion-select-option value="Disponible">Disponible</ion-select-option>
-        <ion-select-option value="No disponible">No disponible</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <button expand="block" (click)="guardarProducto()">Guardar</button>
   </div>
 </ion-content>

@@ -1,13 +1,32 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>add-producto</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/gestion-productos"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Añadir Producto</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">add-producto</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Nombre del Producto</ion-label>
+    <ion-input [(ngModel)]="nuevoProducto.nombre"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Descripción</ion-label>
+    <ion-input [(ngModel)]="nuevoProducto.descripcion"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Precio</ion-label>
+    <ion-input [(ngModel)]="nuevoProducto.precio" type="number"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Imagen</ion-label>
+    <ion-input type="file" (change)="onFileChange($event)"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="agregarNuevoProducto()">Guardar Producto</ion-button>
 </ion-content>
