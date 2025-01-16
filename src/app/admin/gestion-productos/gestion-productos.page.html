@@ -10,19 +10,51 @@
 </ion-header>
 
 <ion-content>
+  <!-- Barra de búsqueda -->
   <div class="search-bar">
     <input type="text" placeholder="Buscar producto..." (input)="filtrarProductos($event)" />
   </div>
 
+  <!-- Tabs de categorías -->
   <div class="tabs">
-    <button 
-      *ngFor="let categoria of categorias" 
-      (click)="cambiarCategoria(categoria.nombre)" 
+    <button
+      *ngFor="let categoria of categorias"
+      (click)="cambiarCategoria(categoria.nombre)"
       [class.active]="categoria.nombre === categoriaActual">
       {{ categoria.nombre }}
     </button>
   </div>
 
+  <!-- Botón para añadir producto -->
+  <div class="add-button">
+    <button (click)="mostrarFormulario = !mostrarFormulario">
+      {{ mostrarFormulario ? 'Cancelar' : 'Añadir Producto' }}
+    </button>
+  </div>
+
+  <!-- Formulario para añadir producto (visible solo si mostrarFormulario es true) -->
+  <div *ngIf="mostrarFormulario" class="add-product">
+    <h3 class="ion-text-center">Añadir Producto</h3>
+    <ion-item>
+      <ion-label position="floating">Nombre del Producto</ion-label>
+      <ion-input [(ngModel)]="nuevoProducto.nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input [(ngModel)]="nuevoProducto.descripcion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input [(ngModel)]="nuevoProducto.precio" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Imagen</ion-label>
+      <ion-input type="file" (change)="onFileChange($event)"></ion-input>
+    </ion-item>
+    <button expand="block" (click)="agregarNuevoProducto()">Guardar Producto</button>
+  </div>
+
+  <!-- Lista de herramientas -->
   <div class="categories">
     <div class="category" *ngFor="let herramienta of herramientasFiltradas">
       <img [src]="herramienta.imagen" [alt]="herramienta.nombre" />
@@ -35,6 +67,7 @@
     </div>
   </div>
 
+  <!-- Formulario de modificación (si modoEdicionProducto es true) -->
   <div *ngIf="modoEdicionProducto" class="edit-form">
     <h3>Modificar Producto</h3>
     <ion-item>

@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-type Herramienta = {
+
+export interface Herramienta {
   id: number;
   nombre: string;
   imagen: string;
   descripcion: string;
   precio: number;
   disponibilidad: string;
-};
+}
 
 @Component({
   selector: 'app-gestion-productos',
@@ -33,57 +34,27 @@ export class GestionProductosPage {
         precio: 20,
         disponibilidad: 'Disponible',
       },
-      {
-        id: 2,
-        nombre: 'Cincel',
-        imagen: 'assets/Images/cincel.jpg',
-        descripcion: 'Cincel de acero endurecido para demolición de concreto.',
-        precio: 15,
-        disponibilidad: 'Disponible',
-      },
     ],
-    Carpintería: [
-      {
-        id: 1,
-        nombre: 'Martillo',
-        imagen: 'assets/Images/martillo.webp',
-        descripcion: 'Martillo de acero forjado ideal para trabajos de carpintería.',
-        precio: 10,
-        disponibilidad: 'Disponible',
-      },
-    ],
-    Pintura: [
-      {
-        id: 1,
-        nombre: 'Brocha',
-        imagen: 'assets/Images/brocha.jpg',
-        descripcion: 'Brocha de alta calidad para pintar superficies grandes.',
-        precio: 8,
-        disponibilidad: 'Disponible',
-      },
-    ],
+    Carpintería: [],
+    Pintura: [],
   };
-  formHerramienta: Partial<Herramienta> = {};
-    modoEdicionProducto = false;
 
-    modificarProducto(herramienta: Herramienta) {
-      this.formHerramienta = { ...herramienta };
-      this.modoEdicionProducto = true;
-  }
-  guardarProducto() {
-    if (this.modoEdicionProducto && this.formHerramienta.id) {
-      const categoria = this.categoriaActual;
-      const index = this.productos[categoria].findIndex((h) => h.id === this.formHerramienta.id);
-      if (index !== -1) {
-        this.productos[categoria][index] = { ...this.formHerramienta } as Herramienta;
-  
-        this.herramientasFiltradas = [...this.productos[categoria]];
-      }
-    }
-    this.modoEdicionProducto = false;
-    this.formHerramienta = {};
-  }
   herramientasFiltradas: Herramienta[] = [...this.productos[this.categoriaActual]];
+
+  nuevoProducto: Partial<Herramienta> = {
+    nombre: '',
+    descripcion: '',
+    precio: undefined,
+    disponibilidad: 'Disponible',
+  };
+
+  mostrarFormulario = false;
+  formHerramienta: Partial<Herramienta> = {};
+  modoEdicionProducto = false;
+
+  constructor() {
+    this.cargarDesdeLocalStorage();
+  }
 
   cambiarCategoria(categoria: string) {
     this.categoriaActual = categoria;
@@ -97,8 +68,90 @@ export class GestionProductosPage {
     );
   }
 
+  modificarProducto(herramienta: Herramienta) {
+    this.formHerramienta = { ...herramienta };
+    this.modoEdicionProducto = true;
+  }
+
+  guardarProducto() {
+    if (this.modoEdicionProducto && this.formHerramienta.id) {
+      const categoria = this.categoriaActual;
+      const index = this.productos[categoria].findIndex((h) => h.id === this.formHerramienta.id);
+      if (index !== -1) {
+        this.productos[categoria][index] = { ...this.formHerramienta } as Herramienta;
+        this.herramientasFiltradas = [...this.productos[categoria]];
+        this.guardarEnLocalStorage();
+      }
+    }
+    this.modoEdicionProducto = false;
+    this.formHerramienta = {};
+  }
+
   eliminarProducto(id: number) {
+    this.productos[this.categoriaActual] = this.productos[this.categoriaActual].filter(
+      (h) => h.id !== id
+    );
+    this.herramientasFiltradas = [...this.productos[this.categoriaActual]];
+    this.guardarEnLocalStorage();
     alert('Este objeto se eliminó');
-    this.herramientasFiltradas = this.herramientasFiltradas.filter((h) => h.id !== id);
+  }
+
+  onFileChange(event: Event) {
+    const fileInput = event.target as HTMLInputElement;
+    if (fileInput.files && fileInput.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.nuevoProducto.imagen = e.target.result;
+      };
+      reader.readAsDataURL(fileInput.files[0]);
+    }
+  }
+
+  agregarNuevoProducto() {
+    if (
+      this.nuevoProducto.nombre &&
+      this.nuevoProducto.descripcion &&
+      this.nuevoProducto.precio &&
+      this.nuevoProducto.imagen
+    ) {
+      const categoria = this.categoriaActual;
+      const nuevoId = this.productos[categoria]?.length
+        ? Math.max(...this.productos[categoria].map((p) => p.id)) + 1
+        : 1;
+
+      const producto: Herramienta = {
+        id: nuevoId,
+        nombre: this.nuevoProducto.nombre,
+        descripcion: this.nuevoProducto.descripcion,
+        precio: this.nuevoProducto.precio,
+        imagen: this.nuevoProducto.imagen,
+        disponibilidad: 'Disponible',
+      };
+
+      this.productos[categoria].push(producto);
+      this.herramientasFiltradas = [...this.productos[categoria]];
+      this.guardarEnLocalStorage();
+      this.nuevoProducto = {
+        nombre: '',
+        descripcion: '',
+        precio: undefined,
+        disponibilidad: 'Disponible',
+      };
+      this.mostrarFormulario = false;
+    } else {
+      alert('Por favor, completa todos los campos.');
+    }
+  }
+
+  private guardarEnLocalStorage() {
+    localStorage.setItem('productos', JSON.stringify(this.productos));
+  }
+
+  private cargarDesdeLocalStorage() {
+    const data = localStorage.getItem('productos');
+    if (data) {
+      this.productos = JSON.parse(data);
+      this.herramientasFiltradas = [...this.productos[this.categoriaActual]];
+    }
   }
 }

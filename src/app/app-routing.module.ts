@@ -54,7 +54,8 @@ const routes: Routes = [
   {
     path: 'admhome',
     loadChildren: () => import('./admin/home/home.module').then( m => m.HomePageModule)
-  },  {
+  },
+  {
     path: 'gestion-productos',
     loadChildren: () => import('./admin/gestion-productos/gestion-productos.module').then( m => m.GestionProductosPageModule)
   },
@@ -62,9 +63,22 @@ const routes: Routes = [
     path: 'gestion-usuarios',
     loadChildren: () => import('./admin/gestion-usuarios/gestion-usuarios.module').then( m => m.GestionUsuariosPageModule)
   },
-
-
-
+  {
+    path: 'add-producto',
+    loadChildren: () => import('./admin/add-producto/add-producto.module').then( m => m.AddProductoPageModule)
+  },
+  {
+    path: 'edit-producto/:id',
+    loadChildren: () => import('./admin/edit-producto/edit-producto.module').then( m => m.EditProductoPageModule)
+  },
+  {
+    path: 'add-product',
+    loadChildren: () => import('./admin/add-producto/add-producto.module').then(m => m.AddProductoPageModule)
+  },
+  {
+    path: 'edit-product/:id',
+    loadChildren: () => import('./admin/edit-producto/edit-producto.module').then(m => m.EditProductoPageModule)
+  }
 ];
 
 @NgModule({
