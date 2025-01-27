@@ -26,6 +26,11 @@ export class HomePage {
       imagen: 'assets/Images/pintura.jpg',
       ruta: '/pintura',
     },
+    {
+      nombre: 'Obra gruesa',
+      imagen: 'assets/Images/obragruesa.jpg',
+      ruta: '/obra-gruesa',
+    },
   ];
 
   constructor(private router: Router) {}

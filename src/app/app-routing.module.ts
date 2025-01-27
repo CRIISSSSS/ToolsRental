@@ -78,7 +78,11 @@ const routes: Routes = [
   {
     path: 'edit-product/:id',
     loadChildren: () => import('./admin/edit-producto/edit-producto.module').then(m => m.EditProductoPageModule)
+  },  {
+    path: 'obra-gruesa',
+    loadChildren: () => import('./pages/categoria/obra-gruesa/obra-gruesa.module').then( m => m.ObraGruesaPageModule)
   }
+
 ];
 
 @NgModule({
